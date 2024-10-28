@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Deducción</title>
+    <style>
+         
+         body{
+            background-image: url('fondo de bikini.jpg'); /* Ruta de la imagen de fondo */
+            background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+            background-position: center; /* Centra la imagen en la pantalla */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed;
+            height: 100vh; /* Asegura que el fondo cubra toda la altura de la pantalla */
+            font-family: 'Spongeboy Me Bob', sans-serif; 
+        }
+        h1{
+            font-family: 'Spongeboy Me Bob', sans-serif; 
+            display: flex;         /* Activa Flexbox en el contenedor */
+            justify-content: center; /* Centra horizontalmente */
+        }
+        .hidden {
+            display: none;
+        }
+        .disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+        .character-image {
+            width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+            height: auto; /* Mantiene la proporción de la imagen */
+            display: block; /* Asegura que la imagen esté en su propia línea */
+            
+        }
+        .button{
+            border-radius: 5px;
+            width: 150px;
+            height: 20px;
+            padding: 5px;
+            font-family: 'Spongeboy Me Bob', sans-serif; 
+            font-size: 12px;
+            
+    
+        }
+        .container {
+            display: flex;                /* Activar flexbox */
+            /*justify-content: center;      /* Centrar horizontalmente el contenido */
+            margin: 20px;                /* Margen externo */
+        
+        }
+        .container2{
+            display: flex;                /* Activar flexbox */
+            flex-direction: column;
+            margin: 20px;                /* Margen externo */  
+            align-items: center;
+            justify-content: center;
+    
+
+        }
+        .master_container{
+            display: flex;
+            flex-direction: row;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Juego de Deducción</h1>
+
+    <div class = "container">
+        <img src="Policia.png" alt="Policia de Fondo de Bikini" class="character-image" style="border-radius: 5px; margin-left: 450px; ">
+        <div style="border-radius: 5px; justify-content: center; border: 2px solid #007bff; padding: 15px; width: 400px " >
+            Gary fue encontrado sin vida, despues de recaudar informacion, en todo fondo de bikini, encontramos que, los siguientes personajes son principarles sospechosos 
+    </div>
+    </div>
+
+    <p id="chances">Oportunidades restantes: 5</p>
+    <h2>Personajes</h2>
+
+    <div class="master_container">
+        <div class = "container2">
+            <img src="Bob mafioso.png" alt="Bob Esponja" class="character-image" style="border-radius: 5px; justify-content: center;">
+            <button id="character1" onclick="getInfo('character', 0)" class="button" >Sr. Esponja</button>
+        </div>
+    
+        <div class = "container2">
+            <img src="Patricio mafioso.png" alt="PAtricio" class="character-image" style="border-radius: 5px; justify-content: center; ">
+            <button id="character2" onclick="getInfo('character', 1)" class="button">Sr. Patricio</button>
+        </div>
+
+        <div class = "container2">
+            <img src="Arenita.png" alt="Arenita" class="character-image" style="border-radius: 5px; ">
+            <button id="character3" onclick="getInfo('character', 2)" class="button" >Sra. Arenita</button>
+        </div>
+
+        <div class = "container2">
+            <img src="Calamardo.png" alt="Calamardo" class="character-image" style="border-radius: 5px; ">
+            <button id="character4" onclick="getInfo('character', 3)" class="button">Sr. Calamardo</button>
+        </div>
+
+        <div class = "container2">
+            <img src="Plankton.png" alt="Plankton" class="character-image" style="border-radius: 5px; ">
+            <button id="character5" onclick="getInfo('character', 4)" class="button" >Sr. Plankton</button>
+        </div>
+    </div>
+
+    <div>
+        <h2>Armas</h2>
+        <div class="master_container">
+            <div class = "container2">
+                <img src="espatula.png" alt="Espatula" class="character-image" style="border-radius: 5px; justify-content: center;">
+                <button id="weapon1" onclick="getInfo('weapon', 0)" class="button">Espatula</button>
+            </div>
+        
+            <div class = "container2">
+                <img src="clarinete.png" alt="Clarinete" class="character-image" style="border-radius: 5px; justify-content: center; ">
+                <button id="weapon2" onclick="getInfo('weapon', 1)" class="button" >Clarinete</button>
+            </div>
+    
+            <div class = "container2">
+                <img src="Cangreburger.png" alt="Arenita" class="character-image" style="border-radius: 5px; ">
+                <button id="weapon3" onclick="getInfo('weapon', 2)" class="button">Cangreburguer</button>
+            </div>
+    
+            <div class = "container2">
+                <img src="Coco.png" alt="Calamardo" class="character-image" style="border-radius: 5px; ">
+                <button id="weapon4" onclick="getInfo('weapon', 3)" class="button">Coco</button>
+            </div>
+    
+            <div class = "container2">
+                <img src="Red de Medusas.png" alt="Plankton" class="character-image" style="border-radius: 5px; ">
+                <button id="weapon5" onclick="getInfo('weapon', 4)" class="button">Red de Medusas</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <h2>Locaciones</h2>
+
+        <div class="master_container">
+            <div class = "container2">
+                <img src="crustaceo.png" alt="Crustaceo Cascarudo" class="character-image" style="border-radius: 5px; justify-content: center;">
+                <button id="location1" onclick="getInfo('location', 0)" class="button">Crustaceo Cascarudo</button>
+            </div>
+        
+            <div class = "container2">
+                <img src="Balde de Carnada.png" alt="Balde de Carnada" class="character-image" style="border-radius: 5px; justify-content: center; ">
+                <button id="location2" onclick="getInfo('location', 1)" class="button">Balde de Carnada</button>
+            </div>
+    
+            <div class = "container2">
+                <img src="Piña.png" alt="Casa de Bob" class="character-image" style="border-radius: 5px; ">
+                <button id="location3" onclick="getInfo('location', 2)" class="button">Casa de Esponja</button>
+            </div>
+    
+            <div class = "container2">
+                <img src="Casa de Patricio.png" alt="Casa de Patricio" class="character-image" style="border-radius: 5px; ">
+                <button id="location4" onclick="getInfo('location', 3)" class="button">Casa de Patricio</button>>
+            </div>
+    
+            <div class = "container2">
+                <img src="Santuario.png" alt="Santuario de Medusas" class="character-image" style="border-radius: 5px; ">
+                <button id="location5" onclick="getInfo('location', 4)" class="button">Santuario de medusas</button>
+            </div>    
+    </div>
+    
+    <p id="infoText" style="border-radius: 5px; margin: 20px; border: 2px solid #007bff; padding: 15px; width: 400px" ></p>
+    <p id="infoText2" style="border-radius: 5px; margin: 20px; border: 2px solid #007bff; padding: 15px; width: 400px" class="hidden" ></p>
+    
+    <div id="deductionSection" class="hidden">
+        <h2>Haz tu deducción</h2>
+        <p>¿Quién fue el culpable?</p>
+        <input type="text" id="deductionCharacter" placeholder="Personaje">
+        <p>¿Qué arma se utilizó?</p>
+        <input type="text" id="deductionWeapon" placeholder="Arma">
+        <p>¿Dónde ocurrió?</p>
+        <input type="text" id="deductionLocation" placeholder="Locación">
+        <button onclick="makeDeduction()">Hacer Deducción</button>
+    </div>
+    <button onclick="startGame()">Reiniciar Juego</button>
+    <script src="script.js"></script>
+
+
+</div>
+</body>
+</html>
